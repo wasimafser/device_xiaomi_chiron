@@ -14,15 +14,25 @@
 # limitations under the License.
 #
 
+# Check for target product
+ifeq (pa_chiron,$(TARGET_PRODUCT))
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Include Paranoid Android common configuration
+TARGET_BOOT_ANIMATION_RES := 1080
+
+TARGET_USES_AOSP := true
+TARGET_USES_QCOM_BSP := false
+
+include device/qcom/common/common.mk
+include vendor/pa/config/common_full_phone.mk
+
 # Inherit from chiron device
 $(call inherit-product, device/xiaomi/chiron/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/pa/config/common_full_phone.mk)
 
 PRODUCT_NAME := pa_chiron
 PRODUCT_DEVICE := chiron
