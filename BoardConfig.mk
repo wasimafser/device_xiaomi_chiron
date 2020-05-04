@@ -37,5 +37,8 @@ TARGET_SCREEN_DENSITY := 400
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Treble
+BOARD_VNDK_RUNTIME_DISABLE := true
+
 # Inherit from proprietary files
 include vendor/xiaomi/chiron/BoardConfigVendor.mk
